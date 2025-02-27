@@ -1,4 +1,4 @@
-<center>![alt text](https://github.com/OdysseusPolymetis/pyOdysseus/blob/main/screen_example.png?raw=true)</center>
+![alt text](https://github.com/OdysseusPolymetis/pyOdysseus/blob/main/screen_example.png?raw=true)
 
 # pyOdysseus
 An alignment interface (aligner based on bertalign), adaptable for several languages (although you may have to get ready for a long and tedious code).
