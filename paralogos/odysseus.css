@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+/* ------------------------------------------------------------------
+   1) Variables CSS pour centraliser les couleurs et styles
+   ------------------------------------------------------------------ */
+:root {
+  /* Couleurs de fond / interface */
+  --bg-color: #F5F3EC;          /* Couleur générale de fond */
+  --header-bg: #FFFFFF;         /* Couleur du header */
+  --header-color: #333333;      /* Couleur du texte du header */
+  --column-bg: #FFFFFF;         /* Fond des colonnes */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Couleurs pour les fréquences – dégradé rouge/vert */
+  --freq0: #000000;  /* Stopwords en noir */
+  --freq1: #B03333;  /* Rouge vif pour low */
+  --freq2: #770000;  /* Rouge foncé pour plag */
+  --freq3: #003366;
+  --freq4: #006600;  /* Vert foncé */
+  --freq5: #00CC66;  /* Vert vif */
+
+  /* Transitions et polices */
+  --transition-speed: 0.3s;
+  --font-family: sans-serif;
+}
+
+/* ------------------------------------------------------------------
+   2) Remise à zéro basique + body
+   ------------------------------------------------------------------ */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  font-family: var(--font-family);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------------
+   3) Image de fond floutée (arrière-plan)
+   ------------------------------------------------------------------ */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+    url("odysseus.webp") no-repeat center center;
+  background-size: contain;  /* Affiche l'image en entier, sans zoom */
+  filter: blur(3px);         /* Flou réduit */
+  z-index: -1;
+}
+
+/* ------------------------------------------------------------------
+   4) Le header fixe en haut
+   ------------------------------------------------------------------ */
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1ex 1em 0;
+  font-size: 13pt;
+  background-color: var(--header-bg);
+  color: var(--header-color);
+  box-shadow: var(--box-shadow);
+  z-index: 100;
+}
+
+/* ------------------------------------------------------------------
+   5) Le slider horizontal qui contient les colonnes (fenêtres)
+   ------------------------------------------------------------------ */
+#slider {
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  min-width: 100%;
+  padding: 2em 0 0 0;
+}
+
+/* ------------------------------------------------------------------
+   6) Chaque «fenêtre» (colonne)
+   ------------------------------------------------------------------ */
+div.col {
+  width: 50ex;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
+  white-space: normal;
+  margin-right: 1rem;
+  background: var(--column-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: 4px;
+  transition: background var(--transition-speed);
+}
+
+/* ------------------------------------------------------------------
+   7) Headers et autres éléments internes aux colonnes
+   ------------------------------------------------------------------ */
+div.col header {
+  background: var(--column-bg);
+  width: 100%;
+  position: absolute;
+}
+
+div.col header h1 {
+  font-size: 12pt;
+  margin: 0.5rem;
+}
+
+div.col header button {
+  float: right;
+  margin: 0.5rem;
+}
+
+div.col section {
+  margin-top: 3em;
+}
+
+div.col footer {
+  height: 100%;
+}
+
+/* ------------------------------------------------------------------
+   8) Les blocs (chunk) et leur comportement au survol
+   ------------------------------------------------------------------ */
+div.chunk {
+  border-left: 20px solid transparent;
+  padding: 2px 0 2px 1ex;
+  transition: background-color var(--transition-speed);
+}
+
+div.chunk:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}
+
+div.col div {
+  border-top: 2px solid var(--bg-color);
+  cursor: pointer;
+}
+
+div.col div b {
+  color: #888;
+  font-size: 90%;
+}
+
+div.col div b:before {
+  content: '[';
+}
+div.col div b:after {
+  content: '] ';
+}
+
+div.col .selected {
+  background: #FFFFFF;
+  border-top: 2px solid #FFF;
+}
+
+/* ------------------------------------------------------------------
+   9) Barres de couleur (synX)
+   ------------------------------------------------------------------ */
+div.col .syn1 {
+  border-left-color: rgba(192, 192, 192, 0.3);
+}
+div.col .syn2 {
+  border-left-color: rgba(192, 192, 192, 0.6);
+}
+div.col .syn3 {
+  border-left-color: rgba(128, 128, 128, 0.4);
+}
+div.col .syn4 {
+  border-left-color: rgba(128, 128, 128, 0.6);
+}
+div.col .syn5 {
+  border-left-color: rgba(96, 96, 96, 0.9);
+}
+/* Plus aucune classe syn6 */
+
+/* ------------------------------------------------------------------
+   10) Style des <mark>
+   ------------------------------------------------------------------ */
+mark {
+  background: transparent;
+}
+
+/* ------------------------------------------------------------------
+   11) Classes de fréquence (uniquement freq0 à freq5)
+   ------------------------------------------------------------------ */
+.freq0 { color: var(--freq0); }
+.freq1 { color: var(--freq1); }
+.freq2 { color: var(--freq2); }
+.freq3 { color: var(--freq3); }
+.freq4 { color: var(--freq4); }
+.freq5 { color: var(--freq5); }
+
+/* ------------------------------------------------------------------
+   12) Checkboxes
+   ------------------------------------------------------------------ */
+.mycheck {
+  position: fixed;
+}
+.chkbox {
+  position: fixed;
+  left: 25px;
+}
+
+/* ------------------------------------------------------------------
+   13) (Conservez vos règles conditionnelles pour #extremes, #hapaxes, #reuse si nécessaire)
+   ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------
+   14) Media queries (optionnel)
+   ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  div.col {
+    width: 90%;
+    margin-right: 1rem;
+  }
+  div.col header h1 {
+    font-size: 1rem;
+  }
+}

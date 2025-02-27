@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Odysseus</title>
+    <link rel="stylesheet" type="text/css" href="odysseus.css"/>
+  </head>
+  <body>
+    <header id="header">
+      L’Odyssée, chant
+      <select id="selchapter" onchange="Odysseus.selchapter( this.options[ this.selectedIndex ].value )">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+      </select>.
+      Ajouter une version
+      <select id="seltext" onchange="Odysseus.textadd( this.options[this.selectedIndex].value ); ">
+        <option/>
+      </select>
+    </header>
+    <div id="slider">
+      <input id="extremes" type="checkbox" class="mycheck" name="extreme" value="hapax">
+      <label for="extremes" class="chkbox">High&Low Frequency</label><br>
+      <input id="hapaxes" type="checkbox" class="mycheck" name="hapax" value="hapax">
+      <label for="hapaxes" class="chkbox">Hapax</label><br><br>
+      <input id="reuse" type="checkbox" class="mycheck" name="reuse" value="reuse">
+      <label for="reuse" class="chkbox">Potential text reuse</label><br><br>
+      </div>
+    <script src="biblio.js">//</script>
+    <script src="Odysseus.js">//</script>
+  </body>
+</html>
