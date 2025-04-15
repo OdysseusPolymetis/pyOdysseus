@@ -12,6 +12,7 @@ The notebook takes `.txt` files as input, and subdivides those files when encoun
 ## Credits
 Based on the original <a href="https://github.com/bfsujason/bertalign">bertalign</a>
 <br>Lei Liu & Min Zhu. 2022. Bertalign: Improved word embedding-based sentence alignment for Chinese–English parallel corpora of literary texts, Digital Scholarship in the Humanities. <a href="https://doi.org/10.1093/llc/fqac089">https://doi.org/10.1093/llc/fqac089</a>.
+<br>Je remercie grandement aussi Gérard Greco qui m'a transmis des données alignées au niveau de la séquence qui m'ont permis d'affiner le modèle LaBSE. La citation est à venir.
 ##### Main Libraries
 
 * [sentence-transformers](https://github.com/UKPLab/sentence-transformers)
