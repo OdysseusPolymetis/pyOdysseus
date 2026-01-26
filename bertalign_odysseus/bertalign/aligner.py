@@ -16,32 +16,44 @@ class Bertalign:
                  len_penalty=True,
                  is_split=False,
                ):
-        
+
         self.max_align = max_align
         self.top_k = top_k
         self.win = win
         self.skip = skip
         self.margin = margin
         self.len_penalty = len_penalty
-        
-        src = clean_text(src)
-        tgt = clean_text(tgt)
-        src_lang = detect_lang(src)
-        tgt_lang = detect_lang(tgt)
-        
-        if is_split:
-            src_sents = src.splitlines()
-            tgt_sents = tgt.splitlines()
+
+        # --- Cas 1 : entrée déjà segmentée
+        if isinstance(src, (list, tuple)) and isinstance(tgt, (list, tuple)):
+            # IMPORTANT : ne pas clean_text ici (sinon indices ≠ affichage)
+            src_sents = [str(s).strip() for s in src if str(s).strip()]
+            tgt_sents = [str(s).strip() for s in tgt if str(s).strip()]
+
+            # détection langue sur un échantillon joint (optionnel mais ok)
+            src_lang = detect_lang(clean_text("\n".join(src_sents[:50])))
+            tgt_lang = detect_lang(clean_text("\n".join(tgt_sents[:50])))
+
         else:
-            src_sents = split_sents(src, src_lang)
-            tgt_sents = split_sents(tgt, tgt_lang)
- 
+            # --- Cas 2 : comportement historique (strings)
+            src = clean_text(src)
+            tgt = clean_text(tgt)
+            src_lang = detect_lang(src)
+            tgt_lang = detect_lang(tgt)
+
+            if is_split:
+                src_sents = [s for s in src.splitlines() if s.strip()]
+                tgt_sents = [s for s in tgt.splitlines() if s.strip()]
+            else:
+                src_sents = split_sents(src, src_lang)
+                tgt_sents = split_sents(tgt, tgt_lang)
+
         src_num = len(src_sents)
         tgt_num = len(tgt_sents)
-        
+
         src_lang = LANG.ISO[src_lang]
         tgt_lang = LANG.ISO[tgt_lang]
-        
+
         print("Source language: {}, Number of sentences: {}".format(src_lang, src_num))
         print("Target language: {}, Number of sentences: {}".format(tgt_lang, tgt_num))
 
@@ -62,6 +74,7 @@ class Bertalign:
         self.char_ratio = char_ratio
         self.src_vecs = src_vecs
         self.tgt_vecs = tgt_vecs
+
         
     def align_sents(self):
 
