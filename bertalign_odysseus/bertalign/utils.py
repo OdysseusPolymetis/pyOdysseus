@@ -13,17 +13,43 @@ def clean_text(text):
             clean_text.append(line)
     return "\n".join(clean_text)
     
-def detect_lang(text):
-    translator = Translator(service_urls=[
-      'translate.google.com.hk',
-    ])
-    max_len = 200
-    chunk = text[0 : min(max_len, len(text))]
-    lang = translator.detect(chunk).lang
-    if lang.startswith('zh'):
-        lang = 'zh'
-    return lang
+from functools import lru_cache
 
+try:
+    from lingua import LanguageDetectorBuilder
+    _LINGUA_DETECTOR = LanguageDetectorBuilder.from_all_languages().build()
+except Exception:
+    _LINGUA_DETECTOR = None
+
+try:
+    from langdetect import detect as _ld_detect
+except Exception:
+    _ld_detect = None
+
+
+@lru_cache(maxsize=256)
+def detect_lang(text: str) -> str:
+    """
+    Retourne un code ISO 639-1 (ex: 'fr', 'en', 'el'...).
+    Détection offline (stable), sans googletrans.
+    """
+    sample = (text or "").strip()
+    if not sample:
+        return "en"
+    sample = sample[:5000]
+
+    if _LINGUA_DETECTOR is not None:
+        lang = _LINGUA_DETECTOR.detect_language_of(sample)
+        if lang is not None and lang.iso_code_639_1 is not None:
+            return lang.iso_code_639_1.name.lower()
+
+    if _ld_detect is not None:
+        try:
+            return _ld_detect(sample)
+        except Exception:
+            pass
+
+    return "en"
 def split_sents(text, lang):
     if lang in LANG.SPLITTER:
         if lang == 'zh':
