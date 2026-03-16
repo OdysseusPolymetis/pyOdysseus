@@ -1,4 +1,6 @@
-![pyOdysseus interface screenshot](https://github.com/OdysseusPolymetis/pyOdysseus/blob/main/pyOdysseus.png?raw=true)
+<p align="center">
+  <img src="https://github.com/OdysseusPolymetis/pyOdysseus/blob/main/screen_example.png?raw=true" alt="pyOdysseus interface screenshot" width="700"/>
+</p>
 
 # pyOdysseus
 
