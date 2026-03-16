@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/OdysseusPolymetis/pyOdysseus/blob/main/screen_example.png?raw=true" alt="pyOdysseus interface screenshot" width="700"/>
+  <img src="pyOdysseus.png" alt="pyOdysseus interface screenshot" width="600">
 </p>
 
 # pyOdysseus
