@@ -221,7 +221,7 @@ class LANG:
 		'kv': 'Komi',
 		'kw': 'Cornish',
 		'ky': 'Kyrgyz',
-		'la': 'Latin'
+		'la': 'Latin',
 		'lb': 'Luxembourgish',
 		'lg': 'Ganda',
 		'li': 'Limburgish',
