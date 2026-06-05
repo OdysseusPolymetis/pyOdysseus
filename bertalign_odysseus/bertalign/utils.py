@@ -10,7 +10,7 @@ def clean_text(text):
     for line in lines:
         line = line.strip()
         if line:
-            line = re.sub('\s+', ' ', line)
+            line = re.sub(r'\s+', ' ', line)
             clean_text.append(line)
     return "\n".join(clean_text)
     
