@@ -1,6 +1,5 @@
 faiss-gpu-cu12
 numba==0.60.0
-googletrans
 sentence-splitter==1.4
 sentence-transformers==3.2.1
 lingua-language-detector
