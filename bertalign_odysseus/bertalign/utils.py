@@ -3,24 +3,28 @@ from functools import lru_cache
 
 from sentence_splitter import SentenceSplitter
 
+
 def clean_text(text):
     clean_text = []
     text = text.strip()
     lines = text.splitlines()
+
     for line in lines:
         line = line.strip()
         if line:
             line = re.sub(r'\s+', ' ', line)
             clean_text.append(line)
+
     return "\n".join(clean_text)
-    
-from functools import lru_cache
+
 
 try:
     from lingua import LanguageDetectorBuilder
+
     _LINGUA_DETECTOR = LanguageDetectorBuilder.from_all_languages().build()
 except Exception:
     _LINGUA_DETECTOR = None
+
 
 try:
     from langdetect import detect as _ld_detect
@@ -31,12 +35,14 @@ except Exception:
 @lru_cache(maxsize=256)
 def detect_lang(text: str) -> str:
     """
-    Retourne un code ISO 639-1 (ex: 'fr', 'en', 'el'...).
-    Détection offline (stable), sans googletrans.
+    Retourne un code ISO 639-1, par exemple 'fr', 'en', 'el'.
+    Détection offline, sans googletrans.
     """
     sample = (text or "").strip()
+
     if not sample:
         return "en"
+
     sample = sample[:5000]
 
     if _LINGUA_DETECTOR is not None:
