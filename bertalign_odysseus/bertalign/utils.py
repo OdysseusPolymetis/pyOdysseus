@@ -1,5 +1,6 @@
 import re
-from googletrans import Translator
+from functools import lru_cache
+
 from sentence_splitter import SentenceSplitter
 
 def clean_text(text):
