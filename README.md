@@ -10,8 +10,6 @@ pyOdysseus est une application locale développée en **Python** et **Streamlit*
 
 L'application a été développée notamment pour l'étude du texte grec ancien de l'*Odyssée* et de ses traductions françaises. Elle peut également servir à d'autres corpus : le choix des modèles d'encodage détermine les langues et les comparaisons possibles.
 
-> **Version documentée :** application Streamlit **V3.8.6** (index lexical persistant, chaînes de lemmes et bonus de rareté). Ce README décrit l'application complète, **pas** l'installation d'un patch isolé.
-
 ## Fonctionnalités
 
 - **Plusieurs traductions simultanées :** un texte pivot et un nombre variable de textes cibles au format `.txt`.
