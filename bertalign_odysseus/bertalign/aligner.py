@@ -19,6 +19,7 @@ class Bertalign:
         device=None,
         batch_size=None,
         show_bar=None,
+        encoder=None,
     ):
         self.max_align = max_align
         self.top_k = top_k
@@ -54,7 +55,9 @@ class Bertalign:
         print(f"Target language: {tgt_lang}, Number of sentences: {tgt_num}")
 
         # modèle spécifique à cet alignement si fourni
-        if model_name_or_path is not None:
+        if encoder is not None:
+            self.model = encoder
+        elif model_name_or_path is not None:
             from bertalign.encoder import Encoder
             self.model = Encoder(
                 model_name_or_path=model_name_or_path,
@@ -66,8 +69,12 @@ class Bertalign:
             self.model = get_model()
 
         print(f"Embedding source and target text using {self.model.model_name} ...")
-        src_vecs, src_lens = self.model.transform(src_sents, max_align - 1)
-        tgt_vecs, tgt_lens = self.model.transform(tgt_sents, max_align - 1)
+        if encoder is not None:
+            src_vecs, src_lens = self.model.transform_source(src_sents, max_align - 1)
+            tgt_vecs, tgt_lens = self.model.transform_target(tgt_sents, max_align - 1)
+        else:
+            src_vecs, src_lens = self.model.transform(src_sents, max_align - 1)
+            tgt_vecs, tgt_lens = self.model.transform(tgt_sents, max_align - 1)
 
         char_ratio = np.sum(src_lens[0,]) / np.sum(tgt_lens[0,])
 
