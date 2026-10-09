@@ -169,3 +169,19 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local virtual environment backups
+.venv-backup*/
+.venv_backup*/
+
+# Local model caches
+.cache/huggingface/
