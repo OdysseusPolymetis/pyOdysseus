@@ -96,13 +96,13 @@ chmod +x install.command launch.command
 Depuis un Terminal ouvert à la racine du dépôt :
 
 ```bash
-python3.10 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements-app.txt
 ```
 
-Adapter `python3.10` en `python3.11` ou `python3.12` si nécessaire.
+Adapter `python3.11` ou `python3.12` si nécessaire.
 
 **Télécharger le modèle français de Stanza** :
 
@@ -134,7 +134,7 @@ Si le dépôt contient `install_windows.bat` et `launch_windows.bat` :
 Ouvrir un terminal dans le dossier du dépôt :
 
 ```bat
-py -3.10 -m venv .venv
+py -3.12 -m venv .venv
 .venv\Scripts\python.exe -m pip install --upgrade pip
 .venv\Scripts\python.exe -m pip install -r requirements-app.txt
 ```
@@ -151,7 +151,7 @@ Lancer l'application :
 .venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-Si la commande `py -3.10` ne fonctionne pas, vérifier la version de Python installée avec `py --list` ou `python --version`.
+Si la commande `py -3.12` ne fonctionne pas, vérifier la version de Python installée avec `py --list` ou `python --version`.
 
 ## 5. Installation sur Linux (Ubuntu / distributions similaires)
 
@@ -166,7 +166,7 @@ chmod +x install_linux.sh launch_linux.sh
 Sinon, effectuer l'installation manuelle :
 
 ```bash
-python3.10 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements-app.txt
