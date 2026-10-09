@@ -25,7 +25,7 @@ L'application a été développée notamment pour l'étude du texte grec ancien 
 
 ## 1. Prérequis
 
-- **Python 3.10, 3.11 ou 3.12** (3.10 est la version utilisée dans l'environnement de développement initial ; 3.13/3.14 ne sont pas prévus par cet ensemble de dépendances).
+- **Python 3.11 ou 3.12** (3.12 est la version utilisée dans l'environnement de développement initial ; 3.13/3.14 ne sont pas prévus par cet ensemble de dépendances).
 - `git` pour cloner le dépôt, ou possibilité de télécharger son archive ZIP.
 - Une connexion Internet pour l'installation et le premier téléchargement des modèles.
 - De préférence plusieurs Go de mémoire disponible et de la place sur disque pour PyTorch, LaBSE et les modèles Stanza.
