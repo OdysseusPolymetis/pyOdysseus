@@ -1,0 +1,13 @@
+streamlit>=1.65,<2
+pandas>=2.0,<3
+numpy<2.1
+numba==0.60.0
+faiss-cpu>=1.8
+sentence-transformers==5.7.0
+sentence-splitter==1.4
+lingua-language-detector>=2.0
+langdetect>=1.0.9
+wtpsplit==2.2.2
+torch>=2.2
+spacy>=3.8,<4
+stanza==1.15.0
