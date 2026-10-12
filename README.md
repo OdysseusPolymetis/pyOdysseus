@@ -36,15 +36,13 @@ Une carte graphique peut accélérer les calculs, mais l'application peut aussi 
 - `stanza==1.15.0` pour l'analyse lexicale ;
 - les autres dépendances figurent dans `requirements-app.txt`.
 
-**Attention :** un ancien fichier de dépendances pouvait installer `sentence-transformers==3.2.1`. Cette version ne doit pas remplacer la version 5.7.0 utilisée par le modèle publié.
-
 ## 2. Récupération du code
 
 Cloner le dépôt **contenant la version Streamlit** :
 
 ```bash
-git clone URL_DU_NOUVEAU_DEPOT
-cd NOM_DU_DEPOT
+git clone https://github.com/OdysseusPolymetis/pyOdysseus.git
+cd pyOdysseus
 ```
 
 Ou télécharger **Code → Download ZIP** depuis GitHub et décompresser l'archive.
